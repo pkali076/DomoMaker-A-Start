@@ -14,7 +14,7 @@ const requiresLogout = (req, res, next) => {
 };
 
 const requiresSecure = (req, res, next) => {
-  if (req.headers['x-forwrded-proto'] !== 'https') {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
     return res.redirect(`https://${req.hostname}${req.url}`);
   }
   return next();
@@ -22,7 +22,7 @@ const requiresSecure = (req, res, next) => {
 
 const bypassSecure = (req, res, next) => {
   next();
-};
+}
 
 module.exports.requiresLogin = requiresLogin;
 module.exports.requiresLogout = requiresLogout;
